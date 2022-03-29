@@ -1,0 +1,1 @@
+ALTER TABLE "Employee" ADD COLUMN "Pass" VARCHAR(60) NULL;
