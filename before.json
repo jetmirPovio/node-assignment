@@ -1,0 +1,235 @@
+{
+  "aggregate": {
+    "counters": {
+      "vusers.created_by_name.Get customer's tracks": 1975,
+      "vusers.created": 2497,
+      "http.requests": 2497,
+      "errors.ECONNREFUSED": 2497,
+      "vusers.failed": 2497,
+      "vusers.created_by_name.Get customers pdf": 522
+    },
+    "histograms": {},
+    "rates": {
+      "http.request_rate": 33
+    },
+    "http.request_rate": null,
+    "firstCounterAt": 1648557102060,
+    "lastCounterAt": 1648557192061,
+    "firstMetricAt": 1648557102060,
+    "lastMetricAt": 1648557192061,
+    "period": 1648557190000,
+    "summaries": {}
+  },
+  "intermediate": [
+    {
+      "counters": {
+        "vusers.created_by_name.Get customer's tracks": 32,
+        "vusers.created": 40,
+        "http.requests": 40,
+        "errors.ECONNREFUSED": 40,
+        "vusers.failed": 40,
+        "vusers.created_by_name.Get customers pdf": 8
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 5
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557102060,
+      "lastCounterAt": 1648557109062,
+      "firstMetricAt": 1648557102060,
+      "lastMetricAt": 1648557109062,
+      "period": "1648557100000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customers pdf": 15,
+        "vusers.created": 50,
+        "http.requests": 50,
+        "errors.ECONNREFUSED": 50,
+        "vusers.failed": 50,
+        "vusers.created_by_name.Get customer's tracks": 35
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 5
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557110057,
+      "lastCounterAt": 1648557119060,
+      "firstMetricAt": 1648557110057,
+      "lastMetricAt": 1648557119060,
+      "period": "1648557110000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customer's tracks": 41,
+        "vusers.created": 50,
+        "http.requests": 50,
+        "errors.ECONNREFUSED": 50,
+        "vusers.failed": 50,
+        "vusers.created_by_name.Get customers pdf": 9
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 5
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557120056,
+      "lastCounterAt": 1648557129060,
+      "firstMetricAt": 1648557120056,
+      "lastMetricAt": 1648557129060,
+      "period": "1648557120000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customers pdf": 17,
+        "vusers.created": 100,
+        "http.requests": 100,
+        "errors.ECONNREFUSED": 100,
+        "vusers.failed": 100,
+        "vusers.created_by_name.Get customer's tracks": 83
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 10
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557130056,
+      "lastCounterAt": 1648557139937,
+      "firstMetricAt": 1648557130056,
+      "lastMetricAt": 1648557139937,
+      "period": "1648557130000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customer's tracks": 192,
+        "vusers.created": 258,
+        "http.requests": 258,
+        "errors.ECONNREFUSED": 258,
+        "vusers.failed": 258,
+        "vusers.created_by_name.Get customers pdf": 66
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 26
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557140059,
+      "lastCounterAt": 1648557149937,
+      "firstMetricAt": 1648557140059,
+      "lastMetricAt": 1648557149937,
+      "period": "1648557140000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customer's tracks": 352,
+        "vusers.created": 441,
+        "http.requests": 441,
+        "errors.ECONNREFUSED": 441,
+        "vusers.failed": 441,
+        "vusers.created_by_name.Get customers pdf": 89
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 44
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557150057,
+      "lastCounterAt": 1648557159936,
+      "firstMetricAt": 1648557150057,
+      "lastMetricAt": 1648557159936,
+      "period": "1648557150000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customer's tracks": 389,
+        "vusers.created": 493,
+        "http.requests": 493,
+        "errors.ECONNREFUSED": 493,
+        "vusers.failed": 493,
+        "vusers.created_by_name.Get customers pdf": 104
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557160056,
+      "lastCounterAt": 1648557169936,
+      "firstMetricAt": 1648557160056,
+      "lastMetricAt": 1648557169936,
+      "period": "1648557160000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customers pdf": 105,
+        "vusers.created": 500,
+        "http.requests": 500,
+        "errors.ECONNREFUSED": 500,
+        "vusers.failed": 500,
+        "vusers.created_by_name.Get customer's tracks": 395
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557170056,
+      "lastCounterAt": 1648557179935,
+      "firstMetricAt": 1648557170056,
+      "lastMetricAt": 1648557179935,
+      "period": "1648557170000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customers pdf": 96,
+        "vusers.created": 500,
+        "http.requests": 500,
+        "errors.ECONNREFUSED": 500,
+        "vusers.failed": 500,
+        "vusers.created_by_name.Get customer's tracks": 404
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557180056,
+      "lastCounterAt": 1648557189935,
+      "firstMetricAt": 1648557180056,
+      "lastMetricAt": 1648557189935,
+      "period": "1648557180000",
+      "summaries": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Get customers pdf": 13,
+        "vusers.created": 65,
+        "http.requests": 65,
+        "errors.ECONNREFUSED": 65,
+        "vusers.failed": 65,
+        "vusers.created_by_name.Get customer's tracks": 52
+      },
+      "histograms": {},
+      "rates": {
+        "http.request_rate": 57
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1648557190056,
+      "lastCounterAt": 1648557192061,
+      "firstMetricAt": 1648557190056,
+      "lastMetricAt": 1648557192061,
+      "period": "1648557190000",
+      "summaries": {}
+    }
+  ]
+}

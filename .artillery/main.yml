@@ -1,0 +1,28 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: Warm up
+    - duration: 30
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp up load
+    - duration: 30
+      arrivalRate: 50
+      name: Sustained load
+  payload:
+    path: 'dynamic_data.csv'
+    fields:
+      - 'CustomerId'
+scenarios:
+  - name: "Get customer's tracks"
+    flow:
+      - get:
+          url: '/customers/{{ CustomerId }}/tracks'
+    weight: 4
+  - name: 'Get customers pdf'
+    flow:
+      - get:
+          url: '/customers/pdf'
+    weight: 1
