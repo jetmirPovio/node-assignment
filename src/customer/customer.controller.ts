@@ -3,10 +3,12 @@ import { Track } from '@prisma/client';
 import { Response } from 'express';
 
 import { CustomerService } from './customer.service';
+import { ApiTags } from '@nestjs/swagger';
 
 /* 
   You don't need to change anything here unless you opted for Level 2.
 */
+@ApiTags('Customers')
 @Controller('customers')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
