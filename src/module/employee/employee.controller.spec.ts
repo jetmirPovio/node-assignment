@@ -36,8 +36,4 @@ describe('EmployeeController', () => {
 
     customerController = app.get<EmployeeController>(EmployeeController);
   });
-
-  it('should return customer tracks', async () => {
-    expect(await customerController.getCustomerTracks(1)).toBe(tracks);
-  });
 });

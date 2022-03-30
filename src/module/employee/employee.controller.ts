@@ -1,11 +1,11 @@
-import { Controller, Post, Body } from '@nestjs/common';
-import { Track } from '@prisma/client';
+import { Controller, Post, Body, HttpCode } from '@nestjs/common';
 
 import { EmployeeService } from './employee.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { StrictValidationPipe } from 'src/common/strict-validation-pipe';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { SuccessfulAuthResponseDto } from './dto/auth-response.dto';
+import { SignInDto } from './dto/sign-in.dto';
 
 /* 
   You don't need to change anything here unless you opted for Level 2.
@@ -21,5 +21,17 @@ export class EmployeeController {
     @Body(StrictValidationPipe) dto: CreateEmployeeDto,
   ): Promise<SuccessfulAuthResponseDto> {
     return await this.employeeService.signUp(dto);
+  }
+
+  @Post('/login')
+  @HttpCode(200)
+  @ApiOperation({
+    description: 'Authenticate as a dashboard user',
+  })
+  async logIn(
+    @Body(StrictValidationPipe) signInDto: SignInDto,
+  ): Promise<SuccessfulAuthResponseDto> {
+    const { email, password } = signInDto;
+    return await this.employeeService.logIn(email, password);
   }
 }

@@ -1,4 +1,8 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Track } from '@prisma/client';
 
 import { PrismaService } from '../../prisma.service';
@@ -51,16 +55,13 @@ export class EmployeeService {
         'Your password must be at least 6 characters and contain at least one lower case, upper case, digit and special character',
       );
     }
-    console.log(passwordError);
     const password = await this.hashPassword(dto.password);
-    console.log(password);
 
     const employee = await this.prismaService.employee.findMany({
       where: {
         Email: dto.email,
       },
     });
-    console.log(employee);
 
     if (employee.length !== 0) {
       throw new BadRequestException('User with that email already exists');
@@ -74,7 +75,6 @@ export class EmployeeService {
         Pass: password,
       },
     });
-    console.log(user);
     const payload: EmployeeJwtPayload = {
       id: user.EmployeeId.toString(),
       id_employee: user.EmployeeId,
@@ -88,6 +88,46 @@ export class EmployeeService {
       accessToken,
     };
   }
+
+  async logIn(
+    email: string,
+    password: string,
+  ): Promise<SuccessfulAuthResponseDto> {
+    const passwordError = await this.checkPassword(password);
+    if (!passwordError) {
+      throw new BadRequestException(
+        'Your password must be at least 6 characters and contain at least one lower case, upper case, digit and special character',
+      );
+    }
+    const employee = await this.prismaService.employee.findMany({
+      where: {
+        Email: email,
+      },
+    });
+
+    if (employee.length === 0) {
+      throw new UnauthorizedException('Invalid username and/or password');
+    }
+
+    if (!(await this.validatePassword(employee[0].Pass, password))) {
+      throw new UnauthorizedException('Invalid username and/or password');
+    }
+
+    const payload: EmployeeJwtPayload = {
+      id: employee[0].EmployeeId.toString(),
+      id_employee: employee[0].EmployeeId,
+      email: employee[0].Email,
+    };
+
+    const accessToken = await this.jwtService.sign(payload, {
+      subject: employee[0].EmployeeId.toString(),
+      expiresIn: 604800,
+    });
+
+    return {
+      accessToken,
+    };
+  }
   private async hashPassword(password: string): Promise<string> {
     return await bcrypt.hash(password, 10);
   }
@@ -95,5 +135,12 @@ export class EmployeeService {
   private async checkPassword(str) {
     const re = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     return re.test(str);
+  }
+
+  async validatePassword(
+    hash: string | null,
+    password: string,
+  ): Promise<boolean> {
+    return await bcrypt.compare(password, hash);
   }
 }
