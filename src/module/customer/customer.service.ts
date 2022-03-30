@@ -50,6 +50,28 @@ export class CustomerService {
       .map((t) => t.Track);
   }
 
+  async getAllTracks(): Promise<Track[]> {
+    const result = await this.prismaService.customer.findMany({
+      select: {
+        Invoice: {
+          select: {
+            InvoiceLine: {
+              select: {
+                Track: true,
+              },
+            },
+          },
+        },
+      },
+    });
+    if (!result.length) {
+      return [];
+    }
+    return result[0].Invoice.map((i) => i.InvoiceLine)
+      .flat()
+      .map((t) => t.Track);
+  }
+
   async getCustomersPdf() {
     const pdfDoc = await PDFDocument.create();
     pdfDoc.registerFontkit(fontKit);
