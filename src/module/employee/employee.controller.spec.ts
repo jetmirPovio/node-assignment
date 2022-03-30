@@ -6,19 +6,9 @@ import { EmployeeService } from './employee.service';
 
 describe('EmployeeController', () => {
   let customerController: EmployeeController;
-  const tracks = [
-    {
-      TrackId: 1,
-      Name: 'name',
-      AlbumId: null,
-      MediaTypeId: 1,
-      GenreId: null,
-      Composer: null,
-      Milliseconds: 1,
-      Bytes: null,
-      UnitPrice: 1.1,
-    },
-  ];
+  const accessToken = {
+    accessToken: 'token',
+  };
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -27,13 +17,32 @@ describe('EmployeeController', () => {
       .useMocker((token) => {
         if (token === EmployeeService) {
           return {
-            getCustomerTracks: jest.fn().mockResolvedValue(tracks),
-            getCustomersPdf: jest.fn().mockResolvedValue(new Uint8Array()),
+            signUp: jest.fn().mockResolvedValue(accessToken),
+            logIn: jest.fn().mockResolvedValue(accessToken),
           };
         }
       })
       .compile();
 
     customerController = app.get<EmployeeController>(EmployeeController);
+  });
+  it('should return signup token', async () => {
+    expect(
+      await customerController.signUp({
+        firstName: 'name',
+        lastName: 'lastName',
+        email: 'test@gmail.com',
+        password: 'Test@123',
+      }),
+    ).toBe(accessToken);
+  });
+
+  it('should return login token', async () => {
+    expect(
+      await customerController.logIn({
+        email: 'test@gmail.com',
+        password: 'Test@123',
+      }),
+    ).toBe(accessToken);
   });
 });

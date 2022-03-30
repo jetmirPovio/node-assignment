@@ -28,6 +28,7 @@ describe('CustomerController', () => {
         if (token === CustomerService) {
           return {
             getCustomerTracks: jest.fn().mockResolvedValue(tracks),
+            getAllTracks: jest.fn().mockResolvedValue(tracks),
             getCustomersPdf: jest.fn().mockResolvedValue(new Uint8Array()),
           };
         }
@@ -39,6 +40,10 @@ describe('CustomerController', () => {
 
   it('should return customer tracks', async () => {
     expect(await customerController.getCustomerTracks(1)).toBe(tracks);
+  });
+
+  it('should return all tracks', async () => {
+    expect(await customerController.getAllTracks()).toBe(tracks);
   });
 
   it('should return customer list in pdf as buffer', async () => {
