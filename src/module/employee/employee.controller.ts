@@ -2,7 +2,7 @@ import { Controller, Post, Body, HttpCode } from '@nestjs/common';
 
 import { EmployeeService } from './employee.service';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
-import { StrictValidationPipe } from 'src/common/strict-validation-pipe';
+import { StrictValidationPipe } from '../../common/strict-validation-pipe';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { SuccessfulAuthResponseDto } from './dto/auth-response.dto';
 import { SignInDto } from './dto/sign-in.dto';
