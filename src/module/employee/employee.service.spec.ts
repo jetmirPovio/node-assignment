@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../../prisma.service';
 import {
   MockContext,
   Context,
   createMockContext,
-} from '../../test/mocks/prisma.mock';
-import { CustomerService } from './customer.service';
+} from '../../../test/mocks/prisma.mock';
+import { EmployeeService } from './employee.service';
 
-describe('CustomerService', () => {
-  let service: CustomerService;
+describe('EmployeeService', () => {
+  let service: EmployeeService;
   let mockCtx: MockContext;
   let ctx: Context;
 
@@ -17,7 +17,7 @@ describe('CustomerService', () => {
     mockCtx = createMockContext();
     ctx = mockCtx as unknown as Context;
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CustomerService],
+      providers: [EmployeeService],
     })
       .useMocker((token) => {
         if (token === PrismaService) {
@@ -26,7 +26,7 @@ describe('CustomerService', () => {
       })
       .compile();
 
-    service = module.get<CustomerService>(CustomerService);
+    service = module.get<EmployeeService>(EmployeeService);
   });
 
   it('should be defined', () => {
@@ -64,11 +64,5 @@ describe('CustomerService', () => {
     mockCtx.prisma.customer.findMany.mockResolvedValue(result as any);
 
     await expect(service.getCustomerTracks(1)).resolves.toEqual([track]);
-  });
-
-  it('should get customers pdf in Uint8Array', async () => {
-    expect((await service.getCustomersPdf()).constructor.name).toEqual(
-      'Uint8Array',
-    );
   });
 });

@@ -23,12 +23,15 @@
     "db:seed": "sh ./scripts/seed.sh"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.0",
+    "@nestjs/common": "^8.4.3",
+    "@nestjs/config": "^2.0.0",
     "@nestjs/core": "^8.0.0",
+    "@nestjs/jwt": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.2.1",
     "@pdf-lib/fontkit": "^1.1.1",
     "@prisma/client": "^3.10.0",
+    "bcryptjs": "^2.4.3",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.0",

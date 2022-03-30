@@ -4,7 +4,7 @@ import { PDFDocument } from 'pdf-lib';
 import * as fs from 'fs';
 import fontKit from '@pdf-lib/fontkit';
 
-import { PrismaService } from '../prisma.service';
+import { PrismaService } from '../../prisma.service';
 
 /* 
   You don't need to change anything here unless you opted for Level 2.
