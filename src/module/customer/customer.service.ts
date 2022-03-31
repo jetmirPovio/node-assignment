@@ -26,50 +26,30 @@ export class CustomerService {
   }
 
   async getCustomerTracks(customerId: number): Promise<Track[]> {
-    const result = await this.prismaService.customer.findMany({
+    const result = await this.prismaService.invoiceLine.findMany({
       where: {
-        CustomerId: customerId,
-      },
-      select: {
         Invoice: {
-          select: {
-            InvoiceLine: {
-              select: {
-                Track: true,
-              },
-            },
+          Customer: {
+            CustomerId: customerId,
           },
         },
+      },
+      select: {
+        Track: true,
       },
     });
     if (!result.length) {
       return [];
     }
-    return result[0].Invoice.map((i) => i.InvoiceLine)
-      .flat()
-      .map((t) => t.Track);
+    return result.map((t) => t.Track);
   }
 
   async getAllTracks(): Promise<Track[]> {
-    const result = await this.prismaService.customer.findMany({
-      select: {
-        Invoice: {
-          select: {
-            InvoiceLine: {
-              select: {
-                Track: true,
-              },
-            },
-          },
-        },
-      },
-    });
+    const result = await this.prismaService.track.findMany();
     if (!result.length) {
       return [];
     }
-    return result[0].Invoice.map((i) => i.InvoiceLine)
-      .flat()
-      .map((t) => t.Track);
+    return result;
   }
 
   async getCustomersPdf() {
