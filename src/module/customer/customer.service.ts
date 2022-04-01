@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Customer, Track } from '@prisma/client';
-import { PDFDocument } from 'pdf-lib';
 import * as fs from 'fs';
-import fontKit from '@pdf-lib/fontkit';
+const { Worker } = require('worker_threads');
 
 import { PrismaService } from '../../prisma.service';
 
@@ -52,23 +51,15 @@ export class CustomerService {
     return result;
   }
 
-  async getCustomersPdf() {
-    const pdfDoc = await PDFDocument.create();
-    pdfDoc.registerFontkit(fontKit);
-
-    const font = await pdfDoc.embedFont(this.robotoFont);
-    const page = pdfDoc.addPage();
-    const fontSize = 12;
-
-    this.customerList.forEach((c, i) => {
-      page.drawText(`${c.CustomerId} ${c.FirstName} ${c.LastName}`, {
-        x: 5,
-        y: i * fontSize * 2,
-        size: fontSize,
-        font,
+  async getCustomersPdf(): Promise<string> {
+    return await new Promise((resolve, reject) => {
+      const worker = new Worker('./src/module/customer/worker.js');
+      worker.on('message', resolve);
+      worker.on('error', reject);
+      worker.on('exit', (code) => {
+        if (code !== 0)
+          reject(new Error(`Worker stopped with exit code ${code}`));
       });
     });
-
-    return await pdfDoc.save();
   }
 }
